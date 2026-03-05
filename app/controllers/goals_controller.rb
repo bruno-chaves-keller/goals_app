@@ -1,7 +1,7 @@
 class GoalsController < ApplicationController
 
   def index
-    goals = Goal.all
+    goals = current_user.goals
     render json: goals
   end
 
