@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_03_05_142515) do
+ActiveRecord::Schema[7.1].define(version: 2026_03_05_142824) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "goal_reviews", force: :cascade do |t|
+    t.bigint "goal_id", null: false
+    t.text "progress"
+    t.date "review_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["goal_id"], name: "index_goal_reviews_on_goal_id"
+  end
 
   create_table "goals", force: :cascade do |t|
     t.string "title"
@@ -33,5 +42,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_03_05_142515) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "goal_reviews", "goals"
   add_foreign_key "goals", "users"
 end
