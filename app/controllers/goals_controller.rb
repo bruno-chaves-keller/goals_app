@@ -6,7 +6,7 @@ class GoalsController < ApplicationController
   end
 
   def create
-    goal = Goal.new(goal_params)
+    goal = current_user.goals.new(goal_params)
 
     if goal.save
       render json: goal, status: :created
@@ -24,8 +24,7 @@ class GoalsController < ApplicationController
       :specific,
       :measurable,
       :relevant,
-      :timeframe,
-      :user_id
+      :timeframe
     )
   end
 
