@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  resources :goals
+  resources :goals do
+    resources :goal_reviews, only: [:create, :index]
+  end
 end
+
