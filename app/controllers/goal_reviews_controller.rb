@@ -1,5 +1,12 @@
 class GoalReviewsController < ApplicationController
 
+  def index
+    goal = current_user.goals.find(params[:goal_id])
+    reviews = goal.goal_reviews.order(review_date: :asc)
+
+    render json: reviews
+  end
+
   def create
     goal = current_user.goals.find(params[:goal_id])
     review = goal.goal_reviews.new(review_params)

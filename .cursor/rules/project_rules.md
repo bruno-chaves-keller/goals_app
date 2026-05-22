@@ -1,0 +1,6 @@
+- Always scope resources through current_user
+- Prefer clean RESTful controllers
+- Keep code beginner-friendly
+- Follow Rails conventions
+- Explain architectural decisions
+- Prefer readability over cleverness
